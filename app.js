@@ -1,88 +1,94 @@
 
-let playerSelection = "Paper";
-let computerSelection = getComputerChoice();
 
+let playerSelection = "";
+let computerSelection = getComputerChoice();
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let randNum = Math.floor(Math.random() * 3) + 1;
     let choice = '';
     if (randNum == 1) {
-        choice = "Rock";
+        choice = "rock";
     } else if (randNum == 2) {
-        choice = "Paper";
+        choice = "paper";
     } else if (randNum == 3) {
-        choice = "Scissors";
+        choice = "scissors";
     }
+    console.log(`Computer: ${choice}`);
     return choice;
 }
 
 
-// let computerSelection = "Paper";
-
 function playRound(player, cpu) {
 
-    if(player === cpu){
+    if (player === cpu) {
         console.log("Draw");
         return `Draw`;
     }
 
-    if (player === "Rock") {
-        if (cpu === "Scissors") {
+    if (player === "rock") {
+        if (cpu === "scissors") {
             console.log(`You Win! ${player} beats ${cpu}`);
+            playerScore++;
             return `You Win! ${player} beats ${cpu}`;
-        } else if (cpu === "Paper") {
+        } else if (cpu === "paper") {
             console.log(`You Lose! ${cpu} beats ${player}`);
+            computerScore++;
             return `You Lose! ${cpu} beats ${player}`;
         }
     }
 
-    if(player === "Paper"){
-        if(cpu === "Rock"){
+    if (player === "paper") {
+        if (cpu === "rock") {
             console.log(`You Win! ${player} beats ${cpu}`);
+            playerScore++;
             return `You Win! ${player} beats ${cpu}`;
-        }else if(cpu === "Scissors"){
+        } else if (cpu === "scissors") {
             console.log(`You Lose! ${cpu} beats ${player}`);
+            computerScore++;
             return `You Lose! ${cpu} beats ${player}`;
         }
     }
 
-    if(player === "Scissors"){
-        if(cpu === "Paper"){
+    if (player === "scissors") {
+        if (cpu === "paper") {
             console.log(`You Win! ${player} beats ${cpu}`);
+            playerScore++;
             return `You Win! ${player} beats ${cpu}`;
-        }else if(cpu === "Rock"){
+        } else if (cpu === "rock") {
             console.log(`You Lose! ${cpu} beats ${player}`);
+            computerScore++;
             return `You Lose! ${cpu} beats ${player}`;
         }
     }
+
+ 
+
+}
+
+function game() {
+
+    for (i = 1; i <= 5; i++) {
+        playerSelection = prompt("Rock, Paper, or Scissors");
+        computerSelection = getComputerChoice();
+        console.log(`Player: ${playerSelection}  Computer: ${computerSelection}`);
+        playRound(playerSelection, computerSelection);
+    }
+    
+    resetScore();
 
 }
 
 
-// function game(){
-//     playerScore = 0;
-//     cpuScore = 0;
-
-//     let player = prompt("Rock, Paper, or Scissors");
-
-//     console.log(player);
+function resetScore() {
+    playerScore = 0;
+    computerScore = 0;
+}
 
 
-//     for(i = 1; i <= 5; i++){
-//         playRound(player, cpu);
-        
-//     }
-
-// }
-
-console.log(game());
-
-// playRound(playerSelection, getComputerChoice());
-// playRound(playerSelection, getComputerChoice());
-// playRound(playerSelection, getComputerChoice());
+game();
 
 
 
-// for(i=0; i < 10; i++){
-//     getComputerChoice();
-// }
+
