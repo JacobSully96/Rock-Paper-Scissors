@@ -1,83 +1,72 @@
-
-
 let playerSelection = "";
 let computerSelection = "";
+let roundWinner = "";
 let playerScore = 0;
 let computerScore = 0;
 
+
 function getComputerChoice() {
     let randNum = Math.floor(Math.random() * 3) + 1;
-    let choice = '';
     if (randNum == 1) {
-        choice = "rock";
+        return "rock";
     } else if (randNum == 2) {
-        choice = "paper";
+        return 'paper'
     } else if (randNum == 3) {
-        choice = "scissors";
+        return 'scissors'
     }
-    console.log(`Computer: ${choice}`);
-    return choice;
 }
 
 
 function playRound(player, cpu) {
 
     if (player === cpu) {
-        console.log("Draw");
-        return `Draw`;
+        roundWinner = 'tie';
     }
 
-    if (player === "rock") {
-        if (cpu === "scissors") {
-            console.log(`You Win! ${player} beats ${cpu}`);
-            playerScore++;
-            return `You Win! ${player} beats ${cpu}`;
-        } else if (cpu === "paper") {
-            console.log(`You Lose! ${cpu} beats ${player}`);
-            computerScore++;
-            return `You Lose! ${cpu} beats ${player}`;
-        }
+    if (
+        (player === 'rock' && cpu === 'scissors') ||
+        (player === 'paper' && cpu === 'rock') ||
+        (player === 'scissors' && cpu === 'paper')
+    ) {
+        // playerScore++;
+        roundWinner = 'player'
     }
 
-    if (player === "paper") {
-        if (cpu === "rock") {
-            console.log(`You Win! ${player} beats ${cpu}`);
-            playerScore++;
-            return `You Win! ${player} beats ${cpu}`;
-        } else if (cpu === "scissors") {
-            console.log(`You Lose! ${cpu} beats ${player}`);
-            computerScore++;
-            return `You Lose! ${cpu} beats ${player}`;
-        }
+    if (
+        (cpu === 'rock' && player === 'scissors') ||
+        (cpu === 'paper' && player === 'rock') ||
+        (cpu === 'scissors' && player === 'paper')
+    ) {
+        // computerScore++;
+        roundWinner = 'computer'
     }
 
-    if (player === "scissors") {
-        if (cpu === "paper") {
-            console.log(`You Win! ${player} beats ${cpu}`);
-            playerScore++;
-            return `You Win! ${player} beats ${cpu}`;
-        } else if (cpu === "rock") {
-            console.log(`You Lose! ${cpu} beats ${player}`);
-            computerScore++;
-            return `You Lose! ${cpu} beats ${player}`;
-        }
-    }
-
- 
+    updateScore();
 
 }
 
-function game() {
+function updateScore() {
 
-    for (i = 1; i <= 5; i++) {
-        playerSelection = prompt("Rock, Paper, or Scissors");
-        computerSelection = getComputerChoice();
-        console.log(`Player: ${playerSelection}  Computer: ${computerSelection}`);
-        playRound(playerSelection, computerSelection);
+    if (roundWinner === 'tie') {
+        console.log('Tie');
     }
 
-    resetScore();
+    if (roundWinner === 'player') {
+        playerScore++;
+        console.log('player wins');
+    }
 
+    if (roundWinner === 'computer') {
+        computerScore++;
+        console.log('computer wins');
+    }
+
+}
+
+
+function game() {
+    computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
 }
 
 
@@ -87,8 +76,47 @@ function resetScore() {
 }
 
 
+function gameOver(){
+    if(playerScore === 5 || computerScore === 5){
+        console.log("Game Over, Score reset");
+        resetScore();
+    }
+}
 
-// game();
+
+// UI Buttons
+ const rockBtn = document.querySelector('#rockBtn');
+ const paperBtn = document.querySelector('#paperBtn');
+ const scissorsBtn = document.querySelector('#scissorsBtn');
+
+ rockBtn.addEventListener('click', function (){
+    playerSelection = 'rock'
+    game();
+    displayData();
+})
+
+paperBtn.addEventListener('click', function (){
+    playerSelection = 'paper';
+    game();
+    displayData();
+})
+
+scissorsBtn.addEventListener('click', function (){
+    playerSelection = 'scissors';
+    game();
+    displayData();
+ })
 
 
+
+
+// Test Code for seeing Values
+    function displayData(){
+        console.log(`Player: ${playerSelection}`);
+        console.log(`CPU: ${computerSelection}`);
+        console.log(`roundWinner: ${roundWinner}`);
+        console.log(`playerScore: ${playerScore}`);
+        console.log(`CPUScore: ${computerScore}`);
+    }
+ 
 
