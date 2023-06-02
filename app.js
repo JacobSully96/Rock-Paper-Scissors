@@ -1,7 +1,7 @@
 
 
 let playerSelection = "";
-let computerSelection = getComputerChoice();
+let computerSelection = "";
 let playerScore = 0;
 let computerScore = 0;
 
@@ -75,7 +75,7 @@ function game() {
         console.log(`Player: ${playerSelection}  Computer: ${computerSelection}`);
         playRound(playerSelection, computerSelection);
     }
-    
+
     resetScore();
 
 }
@@ -87,8 +87,8 @@ function resetScore() {
 }
 
 
-game();
 
+// game();
 
 
 
