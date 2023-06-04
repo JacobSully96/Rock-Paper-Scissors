@@ -30,11 +30,11 @@ function getComputerChoice() {
 function playRound(player, cpu) {
 
 
-    if(gameOverBool){
-        console.log("Game Over")
-        gameResult.textContent = "";
-        return
-    }
+    // if(gameOverBool){
+    //     console.log("Game Over")
+    //     gameResult.textContent = "";
+    //     return
+    // }
 
     if (player === cpu) {
         roundWinner = 'tie';
