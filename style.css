@@ -12,3 +12,12 @@
     border: 1px solid green;
     border-radius: 10px;
 }
+
+#resetBtn{
+    height: 50px;
+    width: 100px;
+    background-color: rgb(221, 224, 223);
+    border: 1px solid green;
+    border-radius: 10px;
+    margin-left: 50px;
+}

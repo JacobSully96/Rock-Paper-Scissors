@@ -9,6 +9,7 @@ let computerScore = 0;
 const rockBtn = document.querySelector('#rockBtn');
 const paperBtn = document.querySelector('#paperBtn');
 const scissorsBtn = document.querySelector('#scissorsBtn');
+const resetBtn = document.querySelector('#resetBtn');
 const scoreDisplay = document.querySelector('.scoreDisplay');
 const winner = document.querySelector('.roundResult');
 const selections = document.querySelector('.selections');
@@ -146,6 +147,11 @@ scissorsBtn.addEventListener('click', function () {
     playRound(playerSelection, computerSelection);
     displayData();
 })
+
+resetBtn.addEventListener('click', function () {
+    resetScore();
+    gameResult.textContent = '';
+});
 
 
 
