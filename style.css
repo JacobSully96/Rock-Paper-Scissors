@@ -1,0 +1,14 @@
+
+.scoreDisplay, .selections, .roundResult, .gameResult{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+
+#rockBtn, #paperBtn, #scissorsBtn{
+    height: 100px;
+    width: 100px;
+    background-color: aquamarine;
+    border: 1px solid green;
+    border-radius: 10px;
+}
