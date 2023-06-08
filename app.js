@@ -3,7 +3,7 @@ let computerSelection = "";
 let roundWinner = "";
 let playerScore = 0;
 let computerScore = 0;
-// let gameOverBool = false;
+let gameOverBool = false;
 
 // UI Buttons
 const rockBtn = document.querySelector('#rockBtn');
@@ -116,15 +116,14 @@ function gameOver() {
         console.log("----------Computer wins with 5-----------");
         gameResult.textContent = `Computer Wins first to 5!`;
     }
-    // gameOver = true;
-    resetScore();
+    // gameOverBool = true;
+
 }
 
 function resetScore() {
     playerScore = 0;
     computerScore = 0;
     scoreDisplay.textContent = `Player: 0 VS Computer: 0`;
-
 }
 
 rockBtn.addEventListener('click', function () {
@@ -150,6 +149,7 @@ scissorsBtn.addEventListener('click', function () {
 
 resetBtn.addEventListener('click', function () {
     resetScore();
+    // gameOverBool = false;
     gameResult.textContent = '';
 });
 
